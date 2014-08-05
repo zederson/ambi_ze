@@ -1,0 +1,31 @@
+<div id="content-radio" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+
+  <div class="messageInfo" id="box_radio" style="display:none;">
+    <div class="span2 countViews gradient">
+      <img id="radio_logo" src="/assets/iTunes.png">
+      <strong id="application_name">iTunes</strong>
+    </div>
+    <div class="span14">
+      <div class="headerInfo noMarginBottom">
+        <span class="name"><strong><%= t "radio.track" %>:</strong></span>
+        <span ><strong id="track"></strong></span>
+        <span class="status enabled fRight noBorder"> </span>
+      </div>
+      <div class="contentDescription overflowHidden">
+        <p class="span12"><span><strong><%= t "radio.artist"%>:</strong></span> <span id="artist">Ativo</span></p>
+      </div>
+      <ul class="actionsTable noMarginTop">
+        <li>
+          <div class="contentDescription overflowHidden">
+            <p class="span9"><span><strong><%= t "radio.album"%>:</strong></span> <span id="album">Ativo</span></p>
+            <p class="span2" id="genre"><span><strong><%= t "radio.genre"%>:</strong></span> <span id="genre_description">Ativo</span></p>
+          </div>
+        </li>
+      </ul>
+   </div>
+  </div>
+  </div>
+
+<% content_for :javascript do %>
+  $(document).ready(radio.init);
+<% end %>

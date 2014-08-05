@@ -1,0 +1,7 @@
+pt:
+  radio:
+    title: "Radio"
+    track: "Música"
+    artist: "Artista"
+    album: "Album"
+    genre: "Genero"

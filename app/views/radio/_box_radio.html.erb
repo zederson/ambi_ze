@@ -1,0 +1,31 @@
+<div id="content-radio" data-uri="<%= request.host %>:<%= request.port %>/websocket">
+  <aside class="sidebar" role="complementary" id="box_radio" style="display:none;">
+    <section class="sideBox">
+      <div class="boxSidebarTitle">
+        <img id="radio_logo_iTunes" class="radio_logo" src="/assets/iTunes.png" style="display:none;">
+        <img id="radio_logo_Spotify" class="radio_logo" src="/assets/Spotify.png" style="display:none;">
+      </div>
+      <h1 class="titSide" id="application_name">iTunes</h1>
+      <div class="innerSideBox boxWhite">
+        <h6><%= t "radio.track"%></h6>
+        <p><strong id="track"></strong></p>
+        <hr>
+
+        <h6><%= t "radio.artist"%></h6>
+        <p><strong id="artist"></strong></p>
+        <hr>
+        <h6><%= t "radio.album"%></h6>
+        <p><strong id="album"></strong></p>
+        <hr>
+
+        <h6><%= t "radio.genre"%></h6>
+        <p><strong id="genre_description"></strong></p>
+     </div>
+    </section>
+  </aside>
+</div>
+
+
+<% content_for :javascript do %>
+  $(document).ready(radio.init);
+<% end %>

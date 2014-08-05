@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="colorBlue with-lwbar-both media-desk-lg">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>::: ZEh :::</title>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= render 'layouts/menu' %>
+
+    <div id="main">
+      <div class="limit">
+        <div class="row">
+          <div class="span12">
+            <%= yield %>
+          </div>
+          <!-- -->
+          <div class="span4">
+            <%= render 'radio/box_radio'%>
+          </div>
+        </div>
+      </div>
+    </div>
+
+   <%= javascript_include_tag 'application' %>
+    <script type='text/javascript'>
+      <%= yield :javascript %>
+    </script>
+  </body>
+</html>

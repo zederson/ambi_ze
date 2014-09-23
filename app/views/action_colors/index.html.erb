@@ -1,0 +1,10 @@
+<section class="statusMessageInfo">
+  <h2 class="titDots">Gêneros Musicais</h2>
+
+  <%= link_to('novo', new_action_color_path)%>
+
+  <%= print_not_found('action_color', @actions)  %>
+
+  <%= render @actions %>
+
+</section>

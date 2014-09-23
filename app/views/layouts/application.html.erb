@@ -7,11 +7,19 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
+  <body ng-app>
     <%= render 'layouts/menu' %>
+
 
     <div id="main">
       <div class="limit">
+        <% flash.each do |key, value| %>
+          <div class="<%= flash_class(key) %> fade in">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            <%= value %>
+          </div>
+        <% end %>
+
         <div class="row">
           <div class="span12">
             <%= yield %>

@@ -1,0 +1,52 @@
+
+<% action.lamps.each_with_index do |lamp, index| %>
+
+  <div class="messageInfo overflowVisible">
+    <div class="span2 txtCenter">
+      <h4> <%= lamp.name%> </h4>
+    </div>
+
+    <div class="span1 txtCenter">
+      <input type='text' class='lamp' value='<%= lamp.hex %>' id="<%= "lamp_#{lamp.id}"%>" data-test="asd" />
+    </div>
+
+    <div class="span1 txtCenter">
+      <b>Ligado</b>
+      <p>
+        <input id="check_on_<%=lamp.id%>" type="checkbox" <%= "checked" if lamp.color.on %> value="<%=lamp.id%>" value="<%= lamp.color.on %>">
+      </p>
+    </div>
+
+    <div class="span2 txtCenter">
+      <b>Saturação</b>
+      <div id="color_sat_slider_<%= lamp.id%>" style="width:90%" data-saturationvalue="<%= lamp.color.saturation %>"></div>
+    </div>
+
+    <div class="span1 txtCenter">
+      <b>Alerta</b>
+      <p>
+      <input id="check_alert_<%= lamp.id%>" type="checkbox" <%= "checked" if lamp.color.alert %>  value="<%=lamp.id%>" value="<%= lamp.color.alert %>">
+      </p>
+    </div>
+
+    <div class="span ">
+      <span class="actLnk fright">
+        <a href="javascript: new Light(<%=lamp.id%>).apply();" id="link_test_<%= lamp.id%>" class="ico-plus-circle">Testar</a>
+      </span>
+    </div>
+
+    <input id="color_id_<%= lamp.id %>"         name="color[][lamp_id]"    type="hidden" value="<%= lamp.id %>">
+    <input id="color_name_<%= lamp.id %>"       name="color[][lamp_name]"  type="hidden" value="<%= lamp.name %>">
+    <input id="color_key_<%= lamp.id %>"        name="color[][id]"         type="hidden" value="<%= lamp.color.id%>">
+    <input id="color_code_hex_<%= lamp.id %>"   name="color[][code_hex]"   type="hidden" value="<%= lamp.color.code_hex %>">
+    <input id="color_code_xy_<%= lamp.id %>"    name="color[][code_xy]"    type="hidden" value="<%= lamp.color.code_xy %>">
+    <input id="color_saturation_<%= lamp.id %>" name="color[][saturation]" type="hidden" value="<%= lamp.color.saturation %>">
+    <input id="color_brightness_<%= lamp.id %>" name="color[][brightness]" type="hidden" value="<%= lamp.color.brightness %>">
+    <input id="color_alert_<%= lamp.id%>"       name="color[][alert]"      type="hidden" value="<%= lamp.color.alert %>">
+    <input id="color_on_<%= lamp.id%>"          name="color[][on]"         type="hidden" value="<%= lamp.color.on %>">
+  </div>
+
+  <% content_for :javascript do %>
+    new ConfigureColorGui(<%=lamp.id%>).build();
+  <% end %>
+<% end%>

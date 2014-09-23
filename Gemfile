@@ -13,6 +13,7 @@ gem 'websocket-rails'
 gem 'redis', '~> 3.0.1'
 gem 'eventmachine'
 gem 'tweetstream', '~> 2.6.0'
+gem "httpclient", "~> 2.3.4.1"
 
 gem 'rack'
 gem 'resque'

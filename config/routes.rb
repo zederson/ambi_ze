@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   root to: "home#index"
-  resources :genres
+  resources :action_colors
+  resources :colors
 
 end

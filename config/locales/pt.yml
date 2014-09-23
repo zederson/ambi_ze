@@ -1,7 +1,29 @@
 pt:
+  menu:
+    home: "Home"
+    actions: "Ações"
+    colors: "Cores"
   radio:
     title: "Radio"
     track: "Música"
     artist: "Artista"
     album: "Album"
     genre: "Genero"
+  colors:
+    not_found: "Nenhum Registro Cadastrado"
+    title_index: "Lista de Cores"
+    title_new: "Cadastro de Cores"
+    title_edit: "Editar Configuração"
+  action_color:
+    not_found: "Nenhuma Ação Encontrada !!"
+    title_new: "Nova Ação"
+  lamps:
+    title: "Luzes"
+
+  helpers:
+    submit:
+      color:
+        create: "Add %{model}"
+    label:
+      color:
+        code_hex: "Código Hex da Cor"

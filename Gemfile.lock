@@ -72,6 +72,7 @@ GEM
     http (0.6.1)
       http_parser.rb (~> 0.6.0)
     http_parser.rb (0.6.0)
+    httpclient (2.3.4.1)
     i18n (0.6.11)
     instagram (1.1.1)
       faraday (>= 0.7, < 0.10)
@@ -209,6 +210,7 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 4.0.0)
   eventmachine
+  httpclient (~> 2.3.4.1)
   instagram
   jbuilder (~> 2.0)
   jquery-rails

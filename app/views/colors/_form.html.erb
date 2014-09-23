@@ -1,0 +1,39 @@
+<div class="input-prepend">
+<%= form_for @color,  html: {class: ""} do |f| %>
+
+      <div class="input-append">
+        <%= f.label :code_hex%>
+        <%= f.text_field :code_hex%>
+      </div>
+
+      <div class="input-append">
+        <%= f.label :code_xy%>
+        <%= f.text_field :code_xy%>
+      </div>
+
+      <div class="input-append">
+        <%= f.label :saturation %>
+        <%= f.text_field :saturation %>
+      </div>
+
+      <div class="input-append">
+        <%= f.label :brightness %>
+        <%= f.text_field :brightness %>
+      </div>
+
+      <div class="sideBySide formInline">
+        <%= f.label :on %>
+        <%= f.check_box :on %>
+      </div>
+
+      <div class="simpleFilter sideBySide formInline">
+        <%= f.label :alert %>
+        <%= f.check_box :alert %>
+      </div>
+
+
+      <div class="input-append">
+      <%= f.submit "Create", :class => 'btn btn-info' %>
+    </div>
+  <% end %>
+</div>

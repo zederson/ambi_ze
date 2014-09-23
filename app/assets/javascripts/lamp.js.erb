@@ -1,4 +1,4 @@
-var _URL_LIGHT = 'http://192.168.1.102/api/edersondelima/';
+var _URL_LIGHT = "<%= Lamp.endpoint %>";
 
 var lamps = {
 
@@ -158,3 +158,85 @@ var lamps = {
     box.append(content);
   }
 }
+
+function Light(lamp_id){
+  this.configuration = new LampConfiguration(lamp_id);
+  this.controller    = new LightController();
+  this.gui           = new ConfigureColorGui(lamp_id);
+
+  this.apply = function(){
+    var data = this.build();
+    this.controller.sendData(this.configuration.lamp_id, data);
+  }
+
+  this.build = function(){
+    var color = this.configuration.convert();
+    var picker = this.configuration.getPicker();
+
+    var data = {
+      'on':  this.gui.getOn(),
+      'bri': parseInt(this.gui.getSaturation()),
+      'xy':  [ color.x, color.y ],
+      //'bri': parseInt((color.bri * 255), 10),
+      'alert': 'none',
+      'effect': 'none'
+    }
+
+    if (this.gui.getAlert()) {
+      data['on']     = true;
+      data['alert']  = 'lselect';
+      data['effect'] = 'colorloop';
+    }
+    return data;
+  }
+}
+
+function LampConfiguration(lamp_id) {
+  this.lamp_id = lamp_id;
+  this.gui     = new ConfigureColorGui(lamp_id);
+
+  this.getPicker = function (){
+    return this.gui.getPicker();
+  }
+
+  this.convert = function(){
+    var xyb   = colorConverter.hexStringToXyBri(this.getPicker().toHex());
+    var color = colorConverter.xyBriForModel(xyb, '<%= Lamp.mode%>');
+    return color;
+  }
+
+  this.setProperties = function() {
+    var color = this.convert();
+
+    this.gui.setHex(this.getPicker().toHexString());
+    this.gui.setXY(color.x, color.y);
+    this.gui.setBrightness(color.bri);
+    this.gui.setOn();
+  }
+}
+
+function LightController() {
+
+  this.sendData = function(lampId, data_json) {
+    var url  = _URL_LIGHT + "lights/" + lampId + "/state";
+    var data = JSON.stringify(data_json);
+
+    $.ajax({
+          url: url,
+          type: 'PUT',
+          data: data,
+          contentType: "application/json",
+          dataType: 'json'
+    });
+  }
+
+  this.getStatus = function(id) {
+    var url = _URL_LIGHT + "lights/" + id;
+
+    var result = null;
+    $.get(url).done(function(data){
+      result = data;
+    });
+  }
+}
+

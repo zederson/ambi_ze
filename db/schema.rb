@@ -11,11 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140805011204) do
+ActiveRecord::Schema.define(version: 20140901011204) do
 
-  create_table "genres", force: true do |t|
+  create_table "action_colors", force: true do |t|
     t.string   "name"
-    t.string   "color"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "colors", force: true do |t|
+    t.integer  "lamp_id"
+    t.string   "lamp_name"
+    t.string   "code_hex"
+    t.string   "code_xy"
+    t.integer  "saturation"
+    t.integer  "brightness"
+    t.boolean  "on"
+    t.boolean  "alert"
+    t.integer  "action_color_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

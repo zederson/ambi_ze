@@ -2,12 +2,15 @@
   <menu id="menuPrincipal" role="navigation">
     <ul>
       <li class="parent selected">
-        <%= link_to "Home", root_path, class:"ico-home", role:"menuitem"%>
+        <%= link_to t('menu.home'), root_path, class:"ico-home", role:"menuitem"%>
       </li>
       <li>
-        <%= link_to "Gêneros", genres_path, role:"menuitem"%>
+        <%= link_to t('menu.actions'), action_colors_path, role:"menuitem"%>
       </li>
-   </ul>
+      <li>
+        <%= link_to t('menu.colors'), colors_path, role:"menuitem"%>
+      </li>
+  </ul>
 
   </menu>
 </header>

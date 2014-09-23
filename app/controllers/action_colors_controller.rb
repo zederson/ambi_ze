@@ -4,6 +4,11 @@ class ActionColorsController < ApplicationController
     @actions = ActionColor.recents
   end
 
+  def show
+    flash[:error] = "Ação não permitida"
+    redirect_to action: :index
+  end
+
   def new
     @action = ActionColor.new
   end

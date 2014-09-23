@@ -1,32 +1,20 @@
-<div class="messageInfo" style="cursor: pointer; ">
+<div class="messageInfo" style="cursor: ; ">
 
-  <div class="span2 countViews gradient" >
-    <span class="label label-info" style="background: <%=  'genre.color_screen' %>; margin-bottom: 4px;">
-      <p><%= 'genre.color' %></p>
-    </span>
-    <br />
-
-    <span class="label label-info" style="background: <%= 'genre.color_screen' %>; margin-bottom: 4px;">
-      <p><%= 'genre.color' %></p>
-    </span>
-    <br />
-    <span class="label label-info" style="background: <%= 'genre.color_screen' %>; margin-bottom: 4px;">
-      <p><%= 'genre.color' %></p>
-    </span>
-    <br />
+  <div class="span1 countViews gradient" >
+    <% action_color.colors.each do | cor | %>
+      <span class="label label-info" style="background: <%= cor.code_hex %>; margin-bottom: 4px;"> </span>
+    <% end %>
   </div>
 
   <div class="span7 contentDescription ">
     <h5><%= action_color.name%></h5>
-    <span>Site principal</span>
+    <span><%= action_color.description %></span>
   </div>
 
-  <div class="status enabled">
-    <div class="contentDescription with_border fright">
-      <ul class="actionsTable">
-        <li><%= link_to('Editar', edit_action_color_path(action_color.id), class: "ico-lamp")%> </li>
-        <li><%= link_to('Excluir', action_color_path(action_color.id), class: "warning ico-trash", method: :delete, data: { confirm: "Deseja excluir o registr ?" })%> </li>
-      </ul>
-    </div>
+  <div class="contentDescription with_border fright">
+    <ul class="actionsTable">
+      <li><%= link_to('Editar', edit_action_color_path(action_color.id), class: "ico-lamp")%> </li>
+      <li><%= link_to('Excluir', action_color_path(action_color.id), class: "warning ico-trash", method: :delete, data: { confirm: "Deseja excluir o registr ?" })%> </li>
+    </ul>
   </div>
 </div>

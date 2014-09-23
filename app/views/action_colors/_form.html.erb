@@ -1,6 +1,5 @@
 <div class="input-prepend">
-<%= form_for @action,  html: {class: ""} do |f| %>
-
+  <%= form_for @action,  html: {class: ""} do |f| %>
       <div class="input-append">
         <%= f.label :name %>
         <%= f.text_field :name %>
@@ -16,9 +15,10 @@
           <%= render 'configure_color', action: @action %>
         </div>
       </div>
+      <div class="btn-group">
+        <%= f.submit "Salvar", :class => 'btn btn-danger' %>
+        <%= link_to('Voltar', action_colors_path, class: "btn btn-info") %>
+      </div>
 
-      <div class="input-append">
-      <%= f.submit "Create", :class => 'btn btn-info' %>
-    </div>
   <% end %>
 </div>

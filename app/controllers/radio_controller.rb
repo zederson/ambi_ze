@@ -4,27 +4,16 @@ class RadioController < WebsocketRails::BaseController
 
     notifier = Music::GenericNotifier.new( lambda{ |music|
       send_message :message_success, music.source, :namespace => :radio if music
-    } )
+    }, :radio_controller )
 
-    lister = Music::Listener.instance
+    listener = Music::Listener.instance
 
-    lister.add_notifier(notifier)
-    lister.start
-
-
-    # LongPolling.start do |s|
-    #   radio = ::RadioBuilder.build
-    #   if radio
-    #     enqueue(radio)
-    #     send_message :message_success, radio.source, :namespace => :radio
-    #   else
-    #     send_message :message_fail, "No Music", :namespace => :radio
-    #   end
-    # end
+    listener.add_notifier(notifier)
+    listener.start
   end
 
   def stop
-    LongPolling.stop
+    Music::Listener.instance.stop
   end
 
   def enqueue(radio)

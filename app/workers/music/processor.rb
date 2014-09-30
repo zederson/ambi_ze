@@ -14,6 +14,10 @@ class Music::Processor
   end
 
   def self.enqueue(colors)
-    colors.each {|c| puts c.code_hex }
+    begin
+      Resque.enqueue(Colors::Processor, colors.map{|c| c.id} )
+    rescue => e
+      Rails.logger.error("Erro ao enqueuar a cor - #{e}")
+    end
   end
 end

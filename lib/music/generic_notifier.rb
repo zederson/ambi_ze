@@ -1,7 +1,10 @@
 class Music::GenericNotifier
 
-  def initialize(l = nil)
-    @command = l
+  attr_reader :name
+
+  def initialize(lamb, name)
+    @command = lamb
+    @name    = name
   end
 
   def execute(music)

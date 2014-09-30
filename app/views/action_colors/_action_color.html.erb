@@ -1,15 +1,16 @@
 <div class="messageInfo" style="cursor: ; ">
-
   <div class="span1 countViews gradient" >
     <% action_color.colors.each do | cor | %>
       <span class="label label-info" style="background: <%= cor.code_hex %>; margin-bottom: 4px;"> </span>
     <% end %>
   </div>
 
-  <div class="span7 contentDescription ">
+  <div class="span contentDescription ">
     <h5><%= action_color.name%></h5>
     <span><%= action_color.description %></span>
+    <div><span class="ico-ico-tags"><%=action_color.type_name %></span></div>
   </div>
+
 
   <div class="contentDescription with_border fright">
     <ul class="actionsTable">

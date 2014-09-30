@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 20140901011204) do
   create_table "action_colors", force: true do |t|
     t.string   "name"
     t.string   "description"
+    t.string   "type_action"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -25,10 +26,10 @@ ActiveRecord::Schema.define(version: 20140901011204) do
     t.string   "lamp_name"
     t.string   "code_hex"
     t.string   "code_xy"
-    t.integer  "saturation"
-    t.integer  "brightness"
-    t.boolean  "on"
-    t.boolean  "alert"
+    t.integer  "saturation",      default: 0
+    t.integer  "brightness",      default: 0
+    t.boolean  "on",              default: true
+    t.boolean  "alert",           default: false
     t.integer  "action_color_id"
     t.datetime "created_at"
     t.datetime "updated_at"

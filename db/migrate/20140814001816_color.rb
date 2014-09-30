@@ -7,8 +7,8 @@ class Color < ActiveRecord::Migration
       t.string  :lamp_name
       t.string  :code_hex
       t.string  :code_xy
-      t.integer :saturation
-      t.integer :brightness
+      t.integer :saturation, default: 0
+      t.integer :brightness, default: 0
       t.boolean :on, default: true
       t.boolean :alert, default: false
 

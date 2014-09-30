@@ -6,11 +6,11 @@ class Lamp
   class << self
 
     def mode
-      "LCT001"
+      AmbiZe.settings["lamp"]["mode"]
     end
 
     def endpoint
-      "http://192.168.1.100/api/edersondelima/"
+      AmbiZe.settings["lamp"]["endpoint"]
     end
 
     def build(colors = [])

@@ -7,18 +7,27 @@
 
       <div class="input-append">
         <%= f.label :description %>
-        <%= f.text_field :description %>
+        <%= f.text_area :description %>
+      </div>
+
+      <div class="input-append">
+        <%= f.label :type_action %>
+        <%= f.collection_select(:type_action, TypeAction.all, :id, :name, :prompt => 'Tipo') %>
+      </div>
+
+      <div class="input-append">
+        <h2>Lampadas</h2>
       </div>
 
       <div class="input-append">
         <div class="boxGrayOpt formInline">
-          <%= render 'configure_color', action: @action %>
+          <%= render 'configure_color', lamps: @action.lamps %>
         </div>
       </div>
+
       <div class="btn-group">
         <%= f.submit "Salvar", :class => 'btn btn-danger' %>
         <%= link_to('Voltar', action_colors_path, class: "btn btn-info") %>
       </div>
-
   <% end %>
 </div>

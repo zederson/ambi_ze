@@ -1,3 +1,30 @@
+function RadioListener() {
+  this.dispatcher = null;
+
+  this.getDispatcher = function(){
+
+    if (this.dispatcher == null){
+      var url         = radio.getContentRadio().data('uri');
+      this.dispatcher = new WebSocketRails(url);
+    }
+
+    return this.dispatcher;
+  }
+
+  this.stop = function() {
+    this.getDispatcher().trigger("radio.stop");
+  }
+
+  this.start = function() {
+    this.getDispatcher().trigger("radio.current_track");
+    this.getDispatcher().bind("radio.message_success", function(track) {
+      radio.setCurrentTrack(track);
+    });
+  }
+}
+
+var radio_listener = new RadioListener();
+
 var radio = {
 
   init: function() {
@@ -10,17 +37,7 @@ var radio = {
   },
 
   start:function() {
-    var url        = radio.getContentRadio().data('uri');
-    var dispatcher = new WebSocketRails(url);
-
-    dispatcher.trigger("radio.current_track");
-    dispatcher.bind("radio.message_success", function(track) {
-      radio.setCurrentTrack(track);
-    });
-
-    dispatcher.bind("radio.message_fail", function(track) {
-      radio.hideBoxRadio();
-    });
+    radio_listener.start();
   },
 
   hideBoxRadio: function() {

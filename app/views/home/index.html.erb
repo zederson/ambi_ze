@@ -1,36 +1,8 @@
-<div class="boxGray revisit" role="region">
-  <h2 class="titleContent" role="presentation">Acesso rápido</h2>
-
-  <div class="shortcutBox expandBox microBox">
-    <div id="lamp_alert">
-      <a href="javascript:;" title="Gera alerta piscante nas luzes selecionadas" >
-        <h3 class="chamaicon-buzina"><span class="shortcutTitle">Alerta</span></h3>
-      </a>
-    </div>
-
-    <div id="lamp_off">
-      <a href="javascript:;" title="Desliga as luzes" >
-        <h3 class="chamaicon-configtools"><span class="shortcutTitle">Desligar</span></h3>
-      </a>
-    </div>
-  </div>
-
-  <div class="span10">
-    <label for="slider_lamp">Brilho:</label>
-    <div id="slider_lamp"></div>
-  </div>
+<div class="navView">
+   <h2>Home</h2>
 </div>
 
+<div class="boxArrowTop" >
+  <%= render 'action_colors/configure_color', lamps: Lamp.all %>
+</div>
 
-<section class="statusMessageInfo">
-  <h2 class="titDots">Lampadas</h2>
-  <br />
-
-  <div id="box_light_names">
-  </div>
-</section>
-
-
-<% content_for :javascript do %>
-  $(document).ready(lamps.init);
-<% end %>

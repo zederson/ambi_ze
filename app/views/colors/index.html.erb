@@ -1,10 +1,7 @@
 <section class="statusMessageInfo">
   <h2 class="titDots"><%= t 'colors.title_index' %></h2>
 
-  <%= link_to "novo", new_color_path %>
-
   <%= print_not_found('colors', @colors) %>
-  <ul>
-    <%= render @colors %>
-  </ul>
+
+  <%= render @colors %>
 </section>

@@ -1,3 +1,8 @@
-<li>
-  <%= color.code_hex %> | <%= link_to "Edit", edit_color_path(color.id) %>
-</li>
+<div class="messageInfo">
+  <div class="span2 countViews gradient" style="background: <%= color.code_hex %>">
+     <h5><%= color.code_hex %></h5>
+  </div>
+  <div class="span">
+     <p class="ellipsis overflowHidden"><%= color.code_hex %></p>
+  </div>
+</div>

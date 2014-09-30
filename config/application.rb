@@ -17,6 +17,11 @@ def log_error(message)
 end
 
 module AmbiZe
+  extend self
+  attr_accessor :settings
+
+  self.settings    = YAML.load_file('config/app_config.yml')
+
   class Application < Rails::Application
 
      config.autoload_paths              += %W(#{config.root}/lib)

@@ -14,11 +14,10 @@ function ConfigureColorGui(lampId) {
   }
 
   this.buildSpectrum = function() {
-    var lamp = this.lampId;
     $("#lamp_" + this.lampId).spectrum({
       chooseText: "Escolher",
       change: function(color) {
-        new LampConfiguration(lamp).setProperties();
+        new LampConfiguration($(this).data("lampid")).setProperties();
       }
     });
   }

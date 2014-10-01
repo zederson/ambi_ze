@@ -1,9 +1,11 @@
-class Music::QueueNotifier
-
-  attr_reader :name
+class Music::QueueNotifier < Music::BaseNotifier
 
   def initialize
-    @name = :resque
+    @name          = :resque
+  end
+
+  def notify_change?
+    true
   end
 
   def execute(music)

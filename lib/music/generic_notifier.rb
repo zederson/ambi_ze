@@ -1,10 +1,13 @@
-class Music::GenericNotifier
+class Music::GenericNotifier < Music::BaseNotifier
 
-  attr_reader :name
+  def initialize(lamb, name, notify_change = false)
+    @command       = lamb
+    @name          = name
+    @notify_change = notify_change
+  end
 
-  def initialize(lamb, name)
-    @command = lamb
-    @name    = name
+  def notify_change?
+    @notify_change
   end
 
   def execute(music)

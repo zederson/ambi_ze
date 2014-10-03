@@ -5,6 +5,18 @@ class Lamp
 
   class << self
 
+    def send(color)
+      return unless color
+      Lamp::Client.put(color.lamp_id, color.to_source.to_json)
+    end
+
+    def off_all
+      find_all.each do |l|
+        Lamp::Client.put(l.id, {on: false}.to_json)
+      end
+      true
+    end
+
     def build(colors = [])
       return Lamp.all if !colors.present?
       lamps = []

@@ -2,12 +2,12 @@ class Colors::Processor
   @queue = :colors
 
   def self.perform(ids)
+    Rails.logger = Logger.new(STDOUT)
     return false if ids.blank?
-    puts "colors: >>>>>>> #{ids}"
 
     ids.each do |id|
       color = Color.find(id)
-      puts "===|| #{color.inspect}"
+      Lamp.send(color)
     end
 
   end

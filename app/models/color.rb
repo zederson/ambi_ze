@@ -17,6 +17,8 @@ class Color < ActiveRecord::Base
   def to_source
     hash            = Hash.new
     hash[:on]       = on
+    return hash unless on
+
     hash[:xy]       = code_xy.split(",").map(&:to_f) unless code_xy.blank?
     hash[:sat]      = saturation if saturation > 0
     hash[:bri]      = brightness if brightness > 0
@@ -27,9 +29,10 @@ class Color < ActiveRecord::Base
     if alert
       hash[:alert]  = 'lselect'
       hash[:effect] = 'colorloop'
+      hash[:on]       = true
     end
 
-    hash.to_json
+    hash
   end
 
 end

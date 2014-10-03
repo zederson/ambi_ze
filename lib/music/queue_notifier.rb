@@ -1,7 +1,7 @@
 class Music::QueueNotifier < Music::BaseNotifier
 
   def initialize
-    @name          = :resque
+    @name = :resque
   end
 
   def notify_change?
@@ -14,5 +14,6 @@ class Music::QueueNotifier < Music::BaseNotifier
     rescue => e
       Rails.logger.error("Erro ao enqueuar a musica - #{e}")
     end
+    true
   end
 end

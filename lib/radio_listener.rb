@@ -1,7 +1,7 @@
 class RadioListener
 
   def initialize
-    @stop       = false
+    @stop = false
   end
 
   def stop?

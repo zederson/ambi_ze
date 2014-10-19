@@ -17,6 +17,13 @@ gem "httpclient", "~> 2.3.4.1"
 
 gem 'rack'
 gem 'resque'
-gem 'instagram'
 
 gem 'spring',        group: :development
+
+group :test, :development do
+  gem "rspec-its"
+  gem "rspec-rails"
+  gem "rspec_junit_formatter"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
+end
